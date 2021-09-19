@@ -47,7 +47,7 @@ class AbstractMessage:
         self.parts = OrderedDict()
 
     def __repr__(self):
-        return "<%s(name=%r)>" % (self.__class__.__name__, self.name.text)
+        return f"<{self.__class__.__name__}(name={self.name.text!r})>"
 
     def resolve(self, definitions):
         pass
@@ -96,7 +96,7 @@ class PortType:
         self.operations = operations
 
     def __repr__(self):
-        return "<%s(name=%r)>" % (self.__class__.__name__, self.name.text)
+        return f"<{self.__class__.__name__}(name={self.name.text!r})>"
 
     def resolve(self, definitions):
         pass
@@ -149,10 +149,10 @@ class Binding:
         self._operations[operation.name] = operation
 
     def __str__(self):
-        return "%s: %s" % (self.__class__.__name__, self.name.text)
+        return f"{self.__class__.__name__}: {self.name.text}"
 
     def __repr__(self):
-        return "<%s(name=%r, port_type=%r)>" % (
+        return "<{}(name={!r}, port_type={!r})>".format(
             self.__class__.__name__,
             self.name.text,
             self.port_type,
@@ -165,7 +165,7 @@ class Binding:
         try:
             return self._operations[key]
         except KeyError:
-            raise ValueError("No such operation %r on %s" % (key, self.name))
+            raise ValueError(f"No such operation {key!r} on {self.name}")
 
     @classmethod
     def match(cls, node):
@@ -202,7 +202,7 @@ class Operation:
             )
 
     def __repr__(self):
-        return "<%s(name=%r, style=%r)>" % (
+        return "<{}(name={!r}, style={!r})>".format(
             self.__class__.__name__,
             self.name,
             self.style,
@@ -210,11 +210,11 @@ class Operation:
 
     def __str__(self):
         if not self.input:
-            return u"%s(missing input message)" % (self.name)
+            return "%s(missing input message)" % (self.name)
 
-        retval = u"%s(%s)" % (self.name, self.input.signature())
+        retval = f"{self.name}({self.input.signature()})"
         if self.output:
-            retval += u" -> %s" % (self.output.signature(as_output=True))
+            retval += " -> %s" % (self.output.signature(as_output=True))
         return retval
 
     def create(self, *args, **kwargs):
@@ -265,7 +265,7 @@ class Port:
         self.binding_options = {}
 
     def __repr__(self):
-        return "<%s(name=%r, binding=%r, %r)>" % (
+        return "<{}(name={!r}, binding={!r}, {!r})>".format(
             self.__class__.__name__,
             self.name,
             self.binding,
@@ -273,7 +273,7 @@ class Port:
         )
 
     def __str__(self):
-        return u"Port: %s (%s)" % (self.name, self.binding)
+        return f"Port: {self.name} ({self.binding})"
 
     def resolve(self, definitions):
         if self._resolve_context is None:
@@ -307,10 +307,10 @@ class Service:
         self._is_resolved = False
 
     def __str__(self):
-        return u"Service: %s" % self.name
+        return "Service: %s" % self.name
 
     def __repr__(self):
-        return "<%s(name=%r, ports=%r)>" % (
+        return "<{}(name={!r}, ports={!r})>".format(
             self.__class__.__name__,
             self.name,
             self.ports,

@@ -60,7 +60,7 @@ class Attachment:
         self._part = part
 
     def __repr__(self):
-        return "<Attachment(%r, %r)>" % (self.content_id, self.content_type)
+        return f"<Attachment({self.content_id!r}, {self.content_type!r})>"
 
     @cached_property
     def content(self):

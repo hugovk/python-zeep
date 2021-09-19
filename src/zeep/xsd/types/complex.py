@@ -84,7 +84,7 @@ class ComplexType(AnyType):
         )
 
     def __str__(self):
-        return "%s(%s)" % (self.__class__.__name__, self.signature())
+        return f"{self.__class__.__name__}({self.signature()})"
 
     @threaded_cached_property
     def attributes(self):
@@ -495,11 +495,11 @@ class ComplexType(AnyType):
             parts.append(part)
 
         for name, attribute in self.attributes:
-            part = "%s: %s" % (name, attribute.signature(schema, standalone=False))
+            part = f"{name}: {attribute.signature(schema, standalone=False)}"
             parts.append(part)
 
         value = ", ".join(parts)
         if standalone:
-            return "%s(%s)" % (self.get_prefixed_name(schema), value)
+            return f"{self.get_prefixed_name(schema)}({value})"
         else:
             return value

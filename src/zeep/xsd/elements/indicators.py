@@ -37,7 +37,7 @@ class Indicator(Base):
     """Base class for the other indicators"""
 
     def __repr__(self):
-        return "<%s(%s)>" % (self.__class__.__name__, super().__repr__())
+        return f"<{self.__class__.__name__}({super().__repr__()})>"
 
     @property
     def default_value(self):
@@ -262,12 +262,12 @@ class OrderIndicator(Indicator, list):
                 parts.append(element.signature(schema, standalone=False))
             else:
                 value = element.signature(schema, standalone=False)
-                parts.append("%s: %s" % (name, value))
+                parts.append(f"{name}: {value}")
 
         part = ", ".join(parts)
 
         if self.accepts_multiple:
-            return "[%s]" % (part,)
+            return f"[{part}]"
         return part
 
 
@@ -574,11 +574,11 @@ class Choice(OrderIndicator):
                 parts.append("{%s}" % (element.signature(schema, standalone=False)))
             else:
                 parts.append(
-                    "{%s: %s}" % (name, element.signature(schema, standalone=False))
+                    f"{{{name}: {element.signature(schema, standalone=False)}}}"
                 )
         part = "(%s)" % " | ".join(parts)
         if self.accepts_multiple:
-            return "%s[]" % (part,)
+            return f"{part}[]"
         return part
 
 
@@ -656,8 +656,7 @@ class Group(Indicator):
         return self.signature()
 
     def __iter__(self, *args, **kwargs):
-        for item in self.child:
-            yield item
+        yield from self.child
 
     @threaded_cached_property
     def elements(self):
@@ -753,6 +752,6 @@ class Group(Indicator):
     def signature(self, schema=None, standalone=True):
         name = create_prefixed_name(self.qname, schema)
         if standalone:
-            return "%s(%s)" % (name, self.child.signature(schema, standalone=False))
+            return f"{name}({self.child.signature(schema, standalone=False)})"
         else:
             return self.child.signature(schema, standalone=False)
