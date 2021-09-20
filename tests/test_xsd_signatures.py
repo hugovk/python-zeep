@@ -258,8 +258,8 @@ def test_signature_complex_type_sequence_with_anys():
     )
     assert custom_type.signature() == (
         "{http://tests.python-zeep.org/}authentication("
-        + "({item_1: xsd:string} | {item_2: {_value_1: ANY, _value_2: ANY}})"
-        + ")"
+        "({item_1: xsd:string} | {item_2: {_value_1: ANY, _value_2: ANY}})"
+        ")"
     )
 
 

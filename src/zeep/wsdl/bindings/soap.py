@@ -421,7 +421,7 @@ class SoapOperation(Operation):
             raise XMLSyntaxError(
                 (
                     "The XML returned by the server does not contain a valid "
-                    + "{%s}Envelope root element. The root element found is %s "
+                    "{%s}Envelope root element. The root element found is %s "
                 )
                 % (envelope_qname.namespace, envelope.tag)
             )

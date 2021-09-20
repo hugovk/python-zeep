@@ -442,7 +442,7 @@ def test_wsdl_array_type():
     array_type = schema.get_type("ns0:array")
     assert array_type.signature(schema=schema) == (
         "ns0:array(_value_1: base[], arrayType: xsd:string, "
-        + "offset: ns1:arrayCoordinate, id: xsd:ID, href: xsd:anyURI, _attr_1: {})"
+        "offset: ns1:arrayCoordinate, id: xsd:ID, href: xsd:anyURI, _attr_1: {})"
     )
     array_elm.render(node, array)
     expected = """

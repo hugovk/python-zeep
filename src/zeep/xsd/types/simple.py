@@ -38,7 +38,7 @@ class AnySimpleType(AnyType):
             raise TypeError(
                 (
                     "%s() takes exactly 1 argument (%d given). "
-                    + "Simple types expect only a single value argument"
+                    "Simple types expect only a single value argument"
                 )
                 % (self.__class__.__name__, num_args)
             )
@@ -47,7 +47,7 @@ class AnySimpleType(AnyType):
             raise TypeError(
                 (
                     "%s() got an unexpected keyword argument %r. "
-                    + "Simple types expect only a single value argument"
+                    "Simple types expect only a single value argument"
                 )
                 % (self.__class__.__name__, next(kwargs.keys()))
             )

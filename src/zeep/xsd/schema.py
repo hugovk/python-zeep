@@ -239,7 +239,7 @@ class Schema:
             raise exceptions.NamespaceError(
                 (
                     "Unable to resolve %s %s. "
-                    + "No schema available for the namespace %r."
+                    "No schema available for the namespace %r."
                 )
                 % (name, qname.text, qname.namespace)
             )
@@ -409,7 +409,7 @@ class SchemaDocument:
         if not schema.documents.has_schema_document_for_ns(self._target_namespace):
             raise RuntimeError(
                 "The document needs to be registered in the schema before "
-                + "it can be loaded"
+                "it can be loaded"
             )
 
         # Disable XML schema validation for now
@@ -528,7 +528,7 @@ class SchemaDocument:
             raise exceptions.LookupError(
                 (
                     "No %(item_name)s '%(localname)s' in namespace %(namespace)s. "
-                    + "Available %(item_name_plural)s are: %(known_items)s"
+                    "Available %(item_name_plural)s are: %(known_items)s"
                 )
                 % {
                     "item_name": item_name,

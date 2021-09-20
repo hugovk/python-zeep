@@ -110,7 +110,7 @@ class SqliteCache(VersionedCacheBase):
         if path == ":memory:":
             raise ValueError(
                 "The SqliteCache doesn't support :memory: since it is not "
-                + "thread-safe. Please use zeep.cache.InMemoryCache()"
+                "thread-safe. Please use zeep.cache.InMemoryCache()"
             )
 
         self._lock = threading.RLock()

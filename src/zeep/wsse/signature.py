@@ -111,8 +111,8 @@ def check_xmlsec_import():
     if xmlsec is None:
         raise ImportError(
             "The xmlsec module is required for wsse.Signature()\n"
-            + "You can install xmlsec with: pip install xmlsec\n"
-            + "or install zeep via: pip install zeep[xmlsec]\n"
+            "You can install xmlsec with: pip install xmlsec\n"
+            "or install zeep via: pip install zeep[xmlsec]\n"
         )
 
 

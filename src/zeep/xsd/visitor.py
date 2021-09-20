@@ -229,7 +229,7 @@ class SchemaVisitor:
         if not location:
             logger.debug(
                 "Ignoring import statement for namespace %r "
-                + "(missing schemaLocation)",
+                "(missing schemaLocation)",
                 namespace,
             )
             return
