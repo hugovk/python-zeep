@@ -208,9 +208,11 @@ class Any(Base):
 
         elif not isinstance(value, tuple(expected_types)):
             type_names = [f"{t.__module__}.{t.__name__}" for t in expected_types]
-            err_message = "Any element received object of type {!r}, expected {}".format(
-                type(value).__name__,
-                " or ".join(type_names),
+            err_message = (
+                "Any element received object of type {!r}, expected {}".format(
+                    type(value).__name__,
+                    " or ".join(type_names),
+                )
             )
 
             raise TypeError(
